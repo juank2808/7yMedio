@@ -1,0 +1,53 @@
+body {
+  /*  background-color: green;*/
+    background:URL("/imgs/cartablanca/verde.jpg");
+    filter: blur(px);
+    width: 100%;
+    height: 100%;
+    
+
+}
+img{
+    border-radius: 1em;
+}
+#carta0:hover{
+    box-shadow: 5px 5px 5px black;
+}
+h1{
+    text-align: center;
+    margin: 1em 0 0.5em 0;
+	color: black;
+	font-weight: normal;
+	font-family: 'Ultra', sans-serif;   
+	font-size: 36px;
+	line-height: 42px;
+	text-transform: uppercase;
+	text-shadow: 0 3px gray, 0 4px #777;
+}
+#resultadoplayer{
+
+    width: 800px;
+    position: absolute;
+    left:600px;
+    top:450px;
+    clear:both;
+    
+}
+#resultadobanca{
+ 
+    width: 800px;
+    position: absolute;
+    left:600px;
+    top:100px;
+    
+}
+#puntoT{
+    font-size-adjust: 0.58;
+    color: white;
+
+
+}
+#puntoMaquina{
+   font-size-adjust: 0.58;
+    color: white; 
+}

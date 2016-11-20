@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="estilos/estilos.css" type="text/css" />
+ 
+    </head>
+    <body>
+   
+        <h1>Siete y Medio</h1>
+        <br>
+        <br>
+        <br>
+        <button id="again">Empieza de nuevo</button>
+        <button id="planta">Planta</button>
+        <br>
+        <br>
+        <br>
+        <img src="imgs/cartablanca/carta0.PNG" class="carta0" id="carta0">
+        
+        <div id="resultadobanca"></div>
+        <div id="puntoMaqina">Puntos Maquina: </div><br><br><br>
+        <div id="resultadoplayer"></div>
+        <div id="puntoT">Puntos Tuyos: </div>
+        <div id="plant"></div>
+    
+     <script type="text/javascript">
+            var carta0 = document.getElementById("carta0");
+            var planta= document.getElementById("planta");
+            var again = document.getElementById("again");
+            var numcarta;
+            var nomMazo =["bastos", "copa", "espada", "oro"];  
+            var nomCarta = Math.floor((Math.random()*nomMazo.length ));
+            var mostCartas = document.getElementById('resultadoplayer');
+            var valorTotalJ=0;
+            var valorTotalM=0;
+            
+            carta0.addEventListener("click", darCarta);
+            planta.addEventListener("click",mePlanto);
+            again.addEventListener("click",again);
+            
+            function darCarta(){
+                numcarta = Math.floor((Math.random() * 10) + 1);
+                puntos=document.getElementById("puntoT");
+                valorTotalJ=valorTotalJ+valorCartas(numcarta);
+                if(nomCarta ==0){
+                    mostCartas.innerHTML+="<img src='imgs/"+nomMazo[0]+numcarta+".PNG'>";
+                   // alert(valorCartas(numcarta));
+                   puntos.innerHTML="Puntos Tuyos: "+ valorTotalJ;
+                }
+                if(nomCarta ==1){
+                    mostCartas.innerHTML+="<img src='imgs/"+nomMazo[1]+numcarta+".PNG'>";
+                    //alert(valorCartas(numcarta));
+                    puntos.innerHTML="Puntos Tuyos: "+ valorTotalJ;
+                }
+                if(nomCarta ==2){
+                    mostCartas.innerHTML+="<img src='imgs/"+nomMazo[2]+numcarta+".PNG'>";
+                   // alert(valorCartas(numcarta));
+                   puntos.innerHTML="Puntos Tuyos: "+ valorTotalJ;
+                }
+                if(nomCarta ==3){
+                    mostCartas.innerHTML+="<img src='imgs/"+nomMazo[3]+numcarta+".PNG'>";
+                   // alert(valorCartas(numcarta));
+                   puntos.innerHTML="Puntos Tuyos: "+ valorTotalJ;
+                }
+                
+            }
+            function lanzaMaquina(){
+                numcarta = Math.floor((Math.random() * 10) + 1);
+                puntos=document.getElementById("puntoMaqina");
+                valorTotalM=valorTotalM+valorCartas(numcarta);
+                if(nomCarta ==0){
+                    mostCartas.innerHTML+="<img src='imgs/"+nomMazo[0]+numcarta+".PNG'>";
+                    puntos.innerHTML="Puntos Maquina: "+ valorTotalM;
+                }
+                if(nomCarta ==1){
+                    mostCartas.innerHTML+="<img src='imgs/"+nomMazo[1]+numcarta+".PNG'>";
+                     puntos.innerHTML="Puntos Maquina: "+ valorTotalM;
+                }
+                if(nomCarta ==2){
+                    mostCartas.innerHTML+="<img src='imgs/"+nomMazo[2]+numcarta+".PNG'>";
+                     puntos.innerHTML="Puntos Maquina: "+ valorTotalM;
+                }
+                if(nomCarta ==3){
+                    mostCartas.innerHTML+="<img src='imgs/"+nomMazo[3]+numcarta+".PNG'>";
+                     puntos.innerHTML="Puntos Maquina: "+ valorTotalM;
+                }
+            }
+            function valorCartas(valCarta){
+                var valor;
+                if(valCarta<=1){
+                    valor = 1;
+                }else if(valCarta<=2){
+                    valor = 2;
+                }else if(valCarta<=3){
+                    valor = 3;
+                }else if(valCarta<=4){
+                    valor = 4;
+                }else if(valCarta<=5){
+                    valor = 5;
+                }else if(valCarta<=6){
+                    valor = 6;
+                }else if(valCarta<=7){
+                    valor = 7;
+                }else if(valCarta<=8){
+                    valor = 0.5;
+                }else if(valCarta<=9){
+                    valor = 0.5;
+                }else if(valCarta<=10){
+                    valor = 0.5;
+                }
+               return valor;
+            }
+            function winner(){
+                if(valorTotalJ==valorTotalM){
+                    alert("has perdido, la pagina se reiniciara para volver a jugar");
+                    setTimeout(window.location.reload(),3000);
+                }else if(valorTotalJ < valorTotalM || valorTotalJ<=7.5){
+                    alert("Has ganado!!!");
+                    setTimeout(window.location.reload(),3000);
+                }else if(valorTotalJ > valorTotalM || valorTotalM <= 7.5){
+                    alert("has perdido, la pagina se reiniciara para volver a jugar");
+                    setTimeout(window.location.reload(),3000);
+                }else if(valorTotalJ>7.5 && valorTotalM<=7.5){
+                    alert("has perdido, la pagina se reiniciara para volver a jugar");
+                    setTimeout(window.location.reload(),3000);
+                }
+            }
+            function mePlanto(){
+               plant = document.getElementById("plant");
+               if(valorTotalJ < 7.5){
+                   plant.innerHTML="<strong>Te plantaste</strong>"
+               } while(valorTotalJ<7.5){
+                   lanzaMaquina();
+               }
+               winner();
+                
+            }
+            function again(){
+                window.location.reload();
+            }
+            
+            
+            
+    </script>
+    </body>
+</html>
